@@ -1,5 +1,79 @@
 # Python Mode for Processing #
 
+## Hack ##
+
+intellisense を有効にするため
+
+1. ダミーファイルを追加（Abdulla060 / Processing.py-intellisense）
+
+```
+root/
+ ├ lib/
+ │     ├ Processing3.pyi
+```
+2. 文頭でダミーファイルを読み込む
+
+## Library ##
+
+fusica などのライブラリーを有効化するには
+
+1. library フォルダに、ライブラリーをフォルダごとコピーする
+
+```
+library/
+ ├ fusica/
+ ├ Terrapin/
+ ├ ...
+ │
+```
+2. 文頭でライブラリーを読み込む（１行目が標準、２行目の書き方でも可能）
+```
+add_library('fisica')
+# from fisica import Fisica, FBody, FBox, FWorld, FCircle, FDistanceJoint
+```
+
+## 実行環境の設定 ###
+
+参照
+https://github.com/Abdulla060/Processing.py-intellisense
+
+this part will guide you through PyCharm setup and how to make the builtin run button work. if you don't want this and only 
+here for the intellisense part and don't mind using the command-line to run your sketches then only follow steps 1 and 2 and skip to the command-line section bellow. 
+
+1. Open "Processing.py-intellisense" folder in PyCharm.
+
+2. once you are there you need to create a new virtual environment by clicking `File > Settings > Project: Processing.py-intellisense > Project Interpreter` 
+then click on the cogwheel to add a new virtual environment. Make sure that the "Base Interpreter" option is set to python 3.x (your version of Python) then simply click ok.
+
+3. now we need to set up an "external tool" to run our sketches in PyCharm. to do this go to `File > Settings > Tools > External tools` 
+and click on the add (+) button. and fill in the fields as follows:
+
+    Name: `Processing-tool`
+    
+    Program: `$PyInterpreterDirectory$\python.exe`
+    
+    Arguments: `-c "import os;os.system('java -jar processing-py.jar $FileName$')"`
+    
+    Working Directory: `$FileDir$`
+    
+    I suggest you copy and paste everything.
+
+4. go to `Run > Edit Configuration` and click the (+) sign then chose Python to add a new config. and fill the fields as follows:
+    
+    Name: `Processing.py`
+    
+    Parameters: `-c ""`
+    
+    scroll down and in the "Before launch: External tool" section click on the (+) sign to add a new tool > "Run External 
+    Tool" a new pop up will appear chose "Processing-tool" Note: you need to highlight the tool not just put the tick in front 
+    of it. click ok on everything and now you are almost ready to run your first sketch :D.
+    
+### command-line
+if you don't mind using the terminal to run your sketches and don't want to bother with the setup. you can run your sketch 
+using PyCharm builtin terminal using this command: `java -jar processing-py.jar NAME_OF_YOUR_SKETCH.py`
+
+
+
 Write real [Processing](http://processing.org/) sketches in Python.
 
   * Based on [Processing 3.0](http://processing.org/), and compatible with most [3rd party libraries](http://www.processing.org/reference/libraries/).
