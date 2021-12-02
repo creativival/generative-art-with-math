@@ -1,7 +1,6 @@
 if False:
     from lib.Processing3 import *
 
-# fisica sample (Not work)
 # Example created by Speykious
 
 

@@ -11,7 +11,15 @@ root/
  ├ lib/
  │     ├ Processing3.pyi
 ```
+
 2. 文頭でダミーファイルを読み込む
+
+```
+if False:
+    from lib.Processing3 import *
+    
+...
+```
 
 ## Library ##
 
