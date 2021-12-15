@@ -2,7 +2,7 @@ if False:
     from lib.Processing3 import *
 
 """
-長方形の分割によるユークリッド互除法の可視化（再帰）
+長方形の分割によるユークリッド互除法の可視化（長方形を長方形に分割）
 """
 
 SIZE_X = 800
@@ -32,29 +32,24 @@ def setup():
                 div_square(position, rect_width)
                 position.y += rect_width
             rect_width = width * RATIO - position.y
-            print(rect_width)
 
 
 def div_square(_position, _rect_width):
     count = 0
-    position_x = _position.x
-    position_y = _position.y
-    end_position = PVector(_rect_width + position_x, _rect_width + position_y)
-    # print(end_position)
+    # ベクトルを作成（参照渡しにならないようにする）
+    p = PVector(_position.x, _position.y)
+    end_position = PVector(_rect_width + p.x, _rect_width + p.y)
     while _rect_width > 0.1:
         count += 1
-        # print(count)
         if count % 2 == 1:
-            while position_x + _rect_width * RATIO < end_position.x + 0.1:
+            while p.x + _rect_width * RATIO < end_position.x + 0.1:
                 fill(color(random(1), 1, 1, 0.3))
-                rect(position_x, position_y, _rect_width * RATIO, _rect_width)
-                position_x += _rect_width * RATIO
-            _rect_width = end_position.x - position_x
-            # print(_rect_width)
+                rect(p.x, p.y, _rect_width * RATIO, _rect_width)
+                p.x += _rect_width * RATIO
+            _rect_width = end_position.x - p.x
         else:
-            while position_y + _rect_width / RATIO < end_position.y + 0.1:
+            while p.y + _rect_width / RATIO < end_position.y + 0.1:
                 fill(color(random(1), 1, 1, 0.3))
-                rect(position_x, position_y, _rect_width, _rect_width / RATIO)
-                position_y += _rect_width / RATIO
-            _rect_width = end_position.y - position_y
-            # print(_rect_width)
+                rect(p.x, p.y, _rect_width, _rect_width / RATIO)
+                p.y += _rect_width / RATIO
+            _rect_width = end_position.y - p.y
