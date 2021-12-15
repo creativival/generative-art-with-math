@@ -12,16 +12,16 @@ NUM_A = SCALAR * 10
 NUM_B = SCALAR * 6
 rect_width = NUM_B
 position = PVector(0, 0)
-iteration = 0
 
 
 def setup():
-    global rect_width, iteration
+    global rect_width
     size(SIZE_X, SIZE_Y)
+    count = 0
 
     while rect_width > 0:
-        iteration += 1
-        if iteration % 2 == 1:
+        count += 1
+        if count % 2 == 1:
             while position.x + rect_width <= NUM_A:
                 rect(position.x, position.y, rect_width, rect_width)
                 position.x += rect_width

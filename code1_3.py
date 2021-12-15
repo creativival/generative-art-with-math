@@ -12,17 +12,17 @@ NUM_A = SCALAR * 7
 NUM_B = SCALAR * 16
 rect_width = NUM_B
 position = PVector(0, 0)
-iteration = 0
 
 
 def setup():
-    global rect_width, iteration
+    global rect_width
     size(SIZE_X, SIZE_Y)
     colorMode(HSB, 1)
+    count = 0
 
     while rect_width > 0:
-        iteration += 1
-        if iteration % 2 == 1:
+        count += 1
+        if count % 2 == 1:
             while position.x + rect_width <= NUM_A:
                 col = color(random(1), 1, 1, 0.3)
                 fill(col)
