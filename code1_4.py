@@ -10,29 +10,29 @@ SIZE_Y = 800
 NUM_A = 16
 NUM_B = 7
 RATIO = 1.0 * NUM_B / NUM_A
-rect_width = SIZE_X
+wd = SIZE_X
 position = PVector(0, 0)
 
 
 def setup():
-    global rect_width
+    global wd
     size(SIZE_X, SIZE_Y)
     colorMode(HSB, 1)
     count = 0
 
-    while rect_width > 0:
+    while wd > 0:
         count += 1
         if count % 2 == 1:
-            while position.x + rect_width * RATIO < width + 0.1:
+            while position.x + wd * RATIO < width + 0.1:
                 col = color(random(1), 1, 1, 0.3)
                 fill(col)
-                rect(position.x, position.y, rect_width * RATIO, rect_width)
-                position.x += rect_width * RATIO
-            rect_width = width - position.x
+                rect(position.x, position.y, wd * RATIO, wd)
+                position.x += wd * RATIO
+            wd = width - position.x
         else:
-            while position.y + rect_width / RATIO < width + 0.1:
+            while position.y + wd / RATIO < width + 0.1:
                 col = color(random(1), 1, 1, 0.3)
                 fill(col)
-                rect(position.x, position.y, rect_width, rect_width / RATIO)
-                position.y += rect_width / RATIO
-            rect_width = width - position.y
+                rect(position.x, position.y, wd, wd / RATIO)
+                position.y += wd / RATIO
+            wd = width - position.y
